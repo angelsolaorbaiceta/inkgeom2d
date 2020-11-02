@@ -39,5 +39,17 @@ describe('Numbers', () => {
     })
   })
 
-  describe('clamp', () => {})
+  describe('clamp', () => {
+    it('keeps original number if within the bounds', () => {
+      expect(numbers.clamp(1, 0, 2)).toBe(1)
+    })
+
+    it('uses the lower bound if the number is smaller than it', () => {
+      expect(numbers.clamp(1, 5, 10)).toBe(5)
+    })
+
+    it('uses the upper bound if the number is greater than it', () => {
+      expect(numbers.clamp(20, 5, 10)).toBe(10)
+    })
+  })
 })
