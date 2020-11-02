@@ -1,0 +1,34 @@
+import Vector from './vector';
+import TParam from './tParam';
+import Projectable from './projectable';
+import Rect from './rect';
+import Circle from './circle';
+import { ClosestPointResult, ContainsPointResult } from './segment.types';
+import Line from './line';
+import { IntersectionSegmentSegment, IntesectionSegmentLine } from './intersection.types';
+export default class Segment {
+    readonly start: Vector;
+    readonly end: Vector;
+    readonly middle: Vector;
+    readonly length: number;
+    readonly width: number;
+    readonly height: number;
+    readonly directionVector: Vector;
+    readonly directionVersor: Vector;
+    readonly normalVersor: Vector;
+    get rectBounds(): Rect;
+    get circleBounds(): Circle;
+    constructor(start: Vector, end: Vector);
+    static makeBetween({ x: sx, y: sy }: Projectable, { x: ex, y: ey }: Projectable): Segment;
+    asLine(): Line;
+    pointAt(t: TParam): Vector;
+    parallelAtDistance(distance: number): Segment;
+    withOrderedPoints(): Segment;
+    closestPointTo(point: Projectable): ClosestPointResult;
+    distanceToPoint(point: Projectable): number;
+    containsPoint(p: Projectable, maxDistance?: number): ContainsPointResult;
+    equals(other: Segment): boolean;
+    intersectionWithSegment(other: Segment): IntersectionSegmentSegment;
+    intersectionWithLine(line: Line): IntesectionSegmentLine;
+    split(t: TParam): [Segment, Segment];
+}
