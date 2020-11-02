@@ -1,6 +1,6 @@
-import Vector from './vector'
 import numbers from './numbers'
 import { Quadrant } from './quadrant'
+import Vector from './vector'
 
 const TWO_PI = 2 * Math.PI
 const PI_QUARTER = 0.25 * Math.PI
@@ -99,6 +99,10 @@ export default class Angle {
 
   plus(other: Angle): Angle {
     return Angle.fromRadians(this.radians + other.radians)
+  }
+
+  minus(other: Angle): Angle {
+    return Angle.fromRadians(this.radians - other.radians)
   }
 
   equals(other: Angle): boolean {

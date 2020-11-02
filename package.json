@@ -1,5 +1,5 @@
 {
-  "name": "@ink/geom2d",
+  "name": "ink-geom2d",
   "version": "0.0.1",
   "description": "2D Geometry package",
   "module": "dist/index.js",
@@ -7,6 +7,10 @@
   "types": "dist/index.d.ts",
   "author": "Angel Sola Orbaiceta",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angelsolaorbaiceta/inkgeom2d.git"
+  },
   "files": [
     "dist"
   ],

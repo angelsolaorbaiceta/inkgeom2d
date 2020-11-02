@@ -27,7 +27,7 @@ export default {
 
   /**
    * Divides `n` into `divisions - 1` equal and integer parts and an extra number
-   * with the remaining, such that:
+   * with the remainder, such that:
    *
    *  ```ts
    *  sum(divideInIntegerParts(n, divs)) === n
@@ -55,11 +55,15 @@ export default {
     return [...Array(divisions - 1).fill(integerN), last]
   },
 
-  clamp(n: number, lower: number, upper: number): number {
-    if (n > lower && n < upper) {
-      return n
-    }
+  clamp(n: number) {
+    return {
+      between(lower: number, upper: number): number {
+        if (n > lower && n < upper) {
+          return n
+        }
 
-    return n < lower ? lower : upper
+        return n < lower ? lower : upper
+      }
+    }
   }
 }

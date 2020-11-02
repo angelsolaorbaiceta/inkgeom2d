@@ -32,6 +32,6 @@ export default class TParam {
   }
 
   static makeValid(value: number): TParam {
-    return new TParam(numbers.clamp(value, MIN, MAX))
+    return new TParam(numbers.clamp(value).between(MIN, MAX))
   }
 }
