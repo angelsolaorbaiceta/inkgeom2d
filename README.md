@@ -2,6 +2,8 @@
 
 A small and fast 2D geometry library without external dependencies.
 
+The geometry library behind [InkStructure app](https://www.inkstructure.com/).
+
 ## Installation
 
 Install the library using yarn:
@@ -98,10 +100,10 @@ const v = new Vector(1, 2)
 // The vector's length
 v.length // 2.236
 
-// Is it a unit vector?
+// Is it a unit vector? (length == 1)
 v.isUnit // false
 
-// Is it a zero vector?
+// Is it a zero vector? (length == 0)
 v.isZero // false
 
 // Compute the unit (normalized) version
@@ -170,6 +172,35 @@ u.opposite() // { x: -1, y: -2 }
 
 // Computing a perpendicular vector with the same length
 u.perpendicular() // { x: -2, y: 1 }
+```
+
+### Vector Factories & Utilities
+
+The `Vector` class can also be instantiated using the factory functions in the _vectors_ module:
+
+```ts
+import { vectors } from 'ink-geom2d'
+
+const pointA = { x: 1, y: 3 }
+const pointB = { x: 5, y: 2 }
+
+// Make a vector between two points
+vectors.makeBetween(pointA, pointB) // { x: 4, y: -1 }
+
+// Make a unit vector between two points
+vectors.makeUnitBetween(pointA, pointB) // { x: 0.970, y: -0.243 }
+
+// Make a point halfway
+vectors.pointHalfWay(pointA, pointB) // { x: 3, y: 2.5 }
+
+// Compute the bisector beteween two vectors
+vectors.bisector(Vector.iVersor, Vector.jVersor) // { x: 1, y: 1 }
+```
+
+A `Vector` can also be created using the `startingAt` fluent API:
+
+```ts
+vectors.startingAt(Vector.origin).withDirection(Vector.iVersor).andLength(50) // { x: 50, y: 0 }
 ```
 
 ## Line Segments
