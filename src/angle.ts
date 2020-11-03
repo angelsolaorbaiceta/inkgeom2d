@@ -75,7 +75,7 @@ export default class Angle {
   }
 
   asVector(): Vector {
-    return new Vector(Math.cos(this.radians), Math.sin(this.radians))
+    return new Vector(this.cos(), this.sin())
   }
 
   cos(): number {
@@ -84,6 +84,10 @@ export default class Angle {
 
   sin(): number {
     return Math.sin(this.radians)
+  }
+
+  tan(): number {
+    return Math.tan(this.radians)
   }
 
   sign(): number {

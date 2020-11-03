@@ -74,6 +74,40 @@ Angle.pi // 𝝅 rad
 Angle.twoPi // 2𝝅 rad
 ```
 
+### Operations
+
+The `Angle` class includes some useful operations:
+
+```ts
+// Get the angle's quadrant
+Angle.fromDegrees(30).quadrant // 1
+Angle.fromDegrees(120).quadrant // 2
+Angle.fromDegrees(210).quadrant // 3
+Angle.fromDegrees(300).quadrant // 4
+
+// Get the opposite angle
+Angle.fromDegrees(30).opposite() // { radians: -0.524, degrees: -30 }
+
+// Getting the sign
+Angle.fromDegrees(30).sign() // 1
+Angle.fromDegrees(-30).sign() // -1
+
+// Getting the angle as a vector
+Angle.fromDegrees(30).asVector() // { x: 0.866, y: 0.5 }
+
+// Trigonometric functions
+const angle = Angle.fromDegrees(30)
+angle.sin() // 0.5
+angle.cos() // 0.866
+angle.tan() // 0.577
+
+// Add and subtract
+const angleOne = Angle.fromDegrees(45)
+const angleTwo = Angle.fromDegrees(30)
+angleOne.plus(angleTwo) // { radians: 1.309, degrees: 75 }
+angleOne.minus(angleTwo) // { radians: 0.262, degrees: 15 }
+```
+
 ## Vectors
 
 The `Vector` class can be used to define both points and vectors:
