@@ -51,5 +51,13 @@ describe('Numbers', () => {
     it('uses the upper bound if the number is greater than it', () => {
       expect(numbers.clamp(20).between(5, 10)).toBe(10)
     })
+
+    it('a number equal to the lower bound', () => {
+      expect(numbers.clamp(5).between(5, 10)).toBe(5)
+    })
+
+    it('a number equal to the upper bound', () => {
+      expect(numbers.clamp(10).between(5, 10)).toBe(10)
+    })
   })
 })

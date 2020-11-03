@@ -1,6 +1,6 @@
 const defaultEpsilon = 1e-10
 
-export default {
+const numbers = {
   areCloseEnough(
     a: number,
     b: number,
@@ -62,8 +62,14 @@ export default {
           return n
         }
 
+        if (numbers.areCloseEnough(n, lower)) {
+          return lower
+        }
+
         return n < lower ? lower : upper
       }
     }
   }
 }
+
+export default numbers
