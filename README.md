@@ -1,6 +1,6 @@
 # InkGeom 2D
 
-A small and fast 2D geometry library.
+A small and fast 2D geometry library without external dependencies.
 
 ## Installation
 
@@ -73,5 +73,103 @@ Angle.twoPi // 2𝝅 rad
 ```
 
 ## Vectors
+
+The `Vector` class can be used to define both points and vectors:
+
+```ts
+import { Vector } from 'ink-geom2d'
+
+// Create a point or vector
+const v = new Vector(1, 2)
+
+// Or use predefined common instances
+Vector.origin // { x: 0, y: 0 }
+Vector.iVersor // { x: 1, y: 0 }
+Vector.minusIVersor // { x: -1, y: 0 }
+Vector.jVersor // { x: 0, y: 1 }
+Vector.minusJVersor // { x: 0, y: -1 }
+```
+
+### Lengths & Distances
+
+```ts
+const v = new Vector(1, 2)
+
+// The vector's length
+v.length // 2.236
+
+// Is it a unit vector?
+v.isUnit // false
+
+// Is it a zero vector?
+v.isZero // false
+
+// Compute the unit (normalized) version
+v.normalized() // { x: 0.447, y: 0.894 }
+
+// Compute a vector with the same direction but different length
+v.scaledToLength(10) // { x: 4.472, y: 8.944 }
+
+// Compute the distance to another point
+v.distanceTo(new Vector(4, 6)) // 5
+```
+
+### Angles, Rotations & Projections
+
+```ts
+const v = new Vector(1, 2)
+
+// Angle between the vector and the horizontal axis
+v.angleWithHorizontal // { radians: 1.107, degrees: 63.4345 }
+
+// Angle between the vector and the vertical axis
+v.angleWithVertical // { radians: -0.464, degrees: -26.565 }
+
+// Angle between the vector and another vector
+v.angleTo(new Vector(1, 1)) // { radians: -0.322, degrees: -18.435 }
+
+// Get the vector's angle (same as angleWithHorizontal)
+v.asAngle() // { radians: 1.107, degrees: 63.4345 }
+
+// Rotate the vector a given angle
+v.rotated(Angle.pi) // { x: -1, y: 2 }
+
+// Projection length of the vector over another vector
+v.projectedOver(Vector.iVersor) // 1
+```
+
+### Vector Operations
+
+```ts
+const u = new Vector(1, 2)
+const v = new Vector(2, -1)
+
+// Adding vectors
+u.plus(v) // { x: 3, y: 1 }
+
+// Subtracting vectors
+u.minus(v) // { x: -1, y: 3 }
+
+// Dot product
+u.dot(v) // 0
+
+// Cross product
+u.cross(v) // -5
+
+// Displacing a point by a vector a given number of times
+u.displaced(v, 3) // { x: 7, y: -1 }
+
+// Parallelism
+u.isParallelTo(v) // false
+
+// Perpendicularity
+u.isPerpendicularTo(v) // true
+
+// Computing the opposite vector
+u.opposite() // { x: -1, y: -2 }
+
+// Computing a perpendicular vector with the same length
+u.perpendicular() // { x: -2, y: 1 }
+```
 
 ## Line Segments
