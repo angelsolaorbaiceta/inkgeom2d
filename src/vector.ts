@@ -15,6 +15,7 @@ export default class Vector implements Projectable {
   static readonly minusJVersor = new Vector(0, -1)
 
   /* <-- PROPERTIES --> */
+
   get length(): number {
     if (!this._length) {
       this._length = Math.sqrt(this.x * this.x + this.y * this.y)
@@ -40,6 +41,7 @@ export default class Vector implements Projectable {
   }
 
   /* <-- CONSTRUCTORS --> */
+
   constructor(x: number, y: number) {
     this.x = x
     this.y = y
@@ -55,6 +57,7 @@ export default class Vector implements Projectable {
   }
 
   /* <-- METHODS --> */
+
   normalized(): Vector {
     if (this.isUnit) return this
 
