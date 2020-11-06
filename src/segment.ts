@@ -1,21 +1,21 @@
-import Vector from './vector'
-import vectors from './vectors'
-import TParam from './tParam'
-import Projectable from './projectable'
+import Circle from './circle'
+import {
+  IntersectionSegmentSegment,
+  IntesectionSegmentLine,
+  segSegNoIntersection
+} from './intersection.types'
+import Line from './line'
+import Projectable, { distanceBetween } from './projectable'
 import Rect from './rect'
 import rects from './rects'
-import Circle from './circle'
 import {
   ClosestPointResult,
   ContainsPointResult,
   noContainsPointResult
 } from './segment.types'
-import Line from './line'
-import {
-  IntersectionSegmentSegment,
-  segSegNoIntersection,
-  IntesectionSegmentLine
-} from './intersection.types'
+import TParam from './tParam'
+import Vector from './vector'
+import vectors from './vectors'
 
 export default class Segment {
   readonly start: Vector
@@ -37,23 +37,16 @@ export default class Segment {
     return new Circle(this.middle, 0.5 * this.length)
   }
 
-  constructor(start: Vector, end: Vector) {
-    this.start = start
-    this.end = end
-    this.middle = new Vector(0.5 * (start.x + end.x), 0.5 * (start.y + end.y))
-    this.length = start.distanceTo(end)
+  constructor(start: Projectable, end: Projectable) {
+    this.start = Vector.fromProjectable(start)
+    this.end = Vector.fromProjectable(end)
+    this.middle = vectors.pointHalfWay(start, end)
+    this.length = distanceBetween(start, end)
     this.width = Math.abs(end.x - start.x)
     this.height = Math.abs(end.y - start.y)
     this.directionVector = vectors.makeBetween(start, end)
     this.directionVersor = vectors.makeUnitBetween(start, end)
     this.normalVersor = this.directionVersor.perpendicular()
-  }
-
-  static makeBetween(
-    { x: sx, y: sy }: Projectable,
-    { x: ex, y: ey }: Projectable
-  ): Segment {
-    return new Segment(new Vector(sx, sy), new Vector(ex, ey))
   }
 
   asLine(): Line {
@@ -109,10 +102,6 @@ export default class Segment {
     return Object.freeze({ contains: true, t, point })
   }
 
-  equals(other: Segment): boolean {
-    return this.start.equals(other.start) && this.end.equals(other.end)
-  }
-
   intersectionWithSegment(other: Segment): IntersectionSegmentSegment {
     const d1 = this.directionVector
     const d2 = other.directionVector
@@ -162,5 +151,9 @@ export default class Segment {
   split(t: TParam): [Segment, Segment] {
     const p = this.pointAt(t)
     return [new Segment(this.start, p), new Segment(p, this.end)]
+  }
+
+  equals(other: Segment): boolean {
+    return this.start.equals(other.start) && this.end.equals(other.end)
   }
 }

@@ -234,7 +234,63 @@ vectors.bisector(Vector.iVersor, Vector.jVersor) // { x: 1, y: 1 }
 A `Vector` can also be created using the `startingAt` fluent API:
 
 ```ts
-vectors.startingAt(Vector.origin).withDirection(Vector.iVersor).andLength(50) // { x: 50, y: 0 }
+const direction = new Vector(1, 2)
+
+vectors.startingAt(Vector.origin).withDirection(direction).andLength(50)
+// { x: 22.361, y: 44.721 }
+
+vectors.startingAt(Vector.origin).withDirection(direction).andXCoord(8)
+// { x: 8, y: 16 }
+
+vectors.startingAt(Vector.origin).withDirection(direction).andYCoord(5)
+// { x: 2.5, y: 5 }
+```
+
+Two vectors representing a base can be ortonormalized using the Gram-Schmidt process:
+
+```ts
+import { vectors } from 'ink-geom2d'
+
+const iVector = new Vector(3, 0)
+const jVector = new Vector(1, 5)
+
+vectors.orthonormalizeBase(iVector, jVector)
+// [{ x: 1, y: 0 }, { x: 0, y: 1 }]
 ```
 
 ## Line Segments
+
+The `Segment` class represents a straight line segment defined between two points: the start and end points.
+
+```ts
+import { Segment } from 'ink-geom2d'
+
+const segment = new Segment({ x: 15, y: 10 }, { x: 20, y: 50 })
+
+// Segment's start point
+segment.start // { x: 15, y: 10 }
+
+// Segment's end point
+segment.end // { x: 20, y: 50 }
+
+// Segment's middle point
+segment.middle // { x: 17.5, y: 30 }
+
+// Segment's Length
+segment.length // 40.311
+
+// Segment's width
+segment.width // 5
+
+// Segment's height
+segment.height // 40
+
+// Segment's direction vector
+segment.directionVector // { x: 5, y: 40 }
+
+// Segment's direction versor (unit length)
+segment.directionVersor // { x: 0.124, y: 0.992 }
+
+// Segment's normal versor (unit length)
+segment.normalVersor // { x: -0.992, y: 0.124 }
+```
