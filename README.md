@@ -18,6 +18,19 @@ or using npm:
 npm install ink-geom2d
 ```
 
+## Guide Content
+
+- [Numbers](#Numbers)
+- [Angles](#Angles)
+  - [Operations](<#Angle Operations>)
+- [Vectors](#Vectors)
+  - [Length & Distance](<#Lengths & Distances>)
+  - [Angles, Rotations & Projections](<#Angles, Rotations & Projections>)
+  - [Operations](<#Vector Operations>)
+  - [Factories & Utilities](<#Vector Factories & Utilities>)
+- [Line Segments](<#Line Segments>)
+  - [Segment Points](<#Segment Points>)
+
 ## Numbers
 
 The _numbers_ module includes functions to work with numbers:
@@ -74,7 +87,7 @@ Angle.pi // 𝝅 rad
 Angle.twoPi // 2𝝅 rad
 ```
 
-### Operations
+### Angle Operations
 
 The `Angle` class includes some useful operations:
 
@@ -293,4 +306,79 @@ segment.directionVersor // { x: 0.124, y: 0.992 }
 
 // Segment's normal versor (unit length)
 segment.normalVersor // { x: -0.992, y: 0.124 }
+
+// Segment's rectangular bounds
+segment.rectBounds
+/*
+{
+  origin: { x: 15, y: 10 },
+  size: { width: 5, height: 40 },
+  left: 15,
+  right: 20,
+  bottom: 10,
+  top: 50
+}
+*/
+
+// Segment's circlular bounds
+segment.circleBounds
+/*
+{ 
+  center: { x: 17.5, y: 30 }, 
+  radius: 20.156
+}
+*/
+```
+
+### Segment Points
+
+```ts
+import { Segment, TParam } from 'ink-geom2d'
+
+const segment = new Segment({ x: 0, y: 10 }, { x: 50, y: 10 })
+
+// Segment point at t = 0.75 (0 <= t <= 1>)
+segment.pointAt(TParam.makeValid(0.75)) // { x: 37.5, y: 10 }
+
+// Segment's closest point to an external point
+segment.closestPointTo({ x: 25, y: 90 })
+/*
+{ 
+  point: { x: 25, y: 10 }, 
+  t: { value: 0.5 } 
+}
+*/
+
+// Segment's distance to an external point
+segment.distanceToPoint({ x: 25, y: 90 }) // 80
+
+// Segment contains point?
+segment.containsPoint({ x: 30, y: 10 })
+/*
+{ 
+  contains: true, 
+  t: { value: 0.6 }, 
+  point: { x: 30, y: 10 } 
+}
+*/
+```
+
+### Segment Intersections
+
+```ts
+import { Segment, Line } from 'ink-geom2d'
+
+const segOne = new Segment({ x: 0, y: 10 }, { x: 50, y: 10 })
+const segTwo = new Segment({ x: 0, y: 0 }, { x: 50, y: 20 })
+const line =
+  // Intersection between two segments
+  segOne.intersectionWithSegment(segTwo)
+/*
+{
+  hasIntersection: true,
+  point: { x: 25, y: 10 },
+  t1: { value: 0.5 },
+  t2: { value: 0.5 }
+}
+*/
 ```
