@@ -28,8 +28,15 @@ npm install ink-geom2d
   - [Angles, Rotations & Projections](<#Angles, Rotations & Projections>)
   - [Operations](<#Vector Operations>)
   - [Factories & Utilities](<#Vector Factories & Utilities>)
+- TParam
 - [Line Segments](<#Line Segments>)
   - [Segment Points](<#Segment Points>)
+- Line
+- Arc
+- Rect
+- Circle
+- Quadratic Equation
+- Affine Transformation
 
 ## Numbers
 
