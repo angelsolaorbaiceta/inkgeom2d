@@ -1,9 +1,10 @@
-import Vector from './vector'
-import numbers from './numbers'
+import { Projectable } from 'src'
 import {
   IntersectionLineLine,
   lineLineNoIntersection
 } from './intersection.types'
+import numbers from './numbers'
+import Vector from './vector'
 
 export default class Line {
   readonly base: Vector
@@ -36,10 +37,10 @@ export default class Line {
     return bx - by * (dx / dy)
   }
 
-  constructor(base: Vector, direction: Vector) {
-    this.base = base
-    this.direction = direction
-    this.directionVersor = direction.normalized()
+  constructor(base: Projectable, direction: Projectable) {
+    this.base = Vector.fromProjectable(base)
+    this.direction = Vector.fromProjectable(direction)
+    this.directionVersor = this.direction.normalized()
   }
 
   isParallelTo(other: Line) {

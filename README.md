@@ -28,13 +28,15 @@ npm install ink-geom2d
   - [Angles, Rotations & Projections](<#Angles, Rotations & Projections>)
   - [Operations](<#Vector Operations>)
   - [Factories & Utilities](<#Vector Factories & Utilities>)
-- TParam
+- [TParam](#TParam)
 - [Line Segments](<#Line Segments>)
   - [Segment Points](<#Segment Points>)
-- Line
-- Arc
-- Rect
-- Circle
+  - [Segment Operations](<#Segment Operations>)
+  - [Segment Intersections](<#Segment Intersections>)
+- [Line](#Line)
+- [Arc](#Arc)
+- [Rect](#Rect)
+- [Circle](#Circle)
 - Quadratic Equation
 - Affine Transformation
 
@@ -278,6 +280,26 @@ vectors.orthonormalizeBase(iVector, jVector)
 // [{ x: 1, y: 0 }, { x: 0, y: 1 }]
 ```
 
+## TParam
+
+The `TParam` class represents a parameter that goes from 0 to 1 (both ends included).
+This parameter is used, for example, to obtain all the middle points in a segment.
+
+```ts
+import { TParam } from 'ink-geom2d'
+
+// Create a new TParam with a valid value
+TParam.tryMake(0.75) // { value: 0.75 }
+
+// Create a new TParam with an invalid value
+TParam.tryMake(4.5) // Uncaught Error: Expected 4.5 to be between 0 and 1
+
+// Make a valid TParam. Caps the value to the [0, 1] range
+TParam.makeValid(-2) // { value: 0 }
+TParam.makeValid(0.3) // { value: 0.3 }
+TParam.makeValid(4.5) // { value: 1 }
+```
+
 ## Line Segments
 
 The `Segment` class represents a straight line segment defined between two points: the start and end points.
@@ -370,6 +392,33 @@ segment.containsPoint({ x: 30, y: 10 })
 */
 ```
 
+### Segment Operations
+
+```ts
+import { Segment, TParam } from 'ink-geom2d'
+
+const segment = new Segment({ x: 0, y: 10 }, { x: 50, y: 10 })
+
+// Split a segment in two at a given t value
+segment.split(TParam.middle)
+/*
+[
+  {
+    start: { x: 0, y: 10 },
+    end: { x: 25, y: 10 },
+    middle: { x: 12.5, y: 10 },
+    ...
+  },
+  {
+    start: { x: 25, y: 10 },
+    end: { x: 50, y: 10 },
+    middle: { x: 37.5, y: 10 },
+    ...
+  }
+]
+*/
+```
+
 ### Segment Intersections
 
 ```ts
@@ -377,9 +426,10 @@ import { Segment, Line } from 'ink-geom2d'
 
 const segOne = new Segment({ x: 0, y: 10 }, { x: 50, y: 10 })
 const segTwo = new Segment({ x: 0, y: 0 }, { x: 50, y: 20 })
-const line =
-  // Intersection between two segments
-  segOne.intersectionWithSegment(segTwo)
+const line = new Line({ x: 25, y: 0 }, { x: 0, y: 1 })
+
+// Intersection between two segments
+segOne.intersectionWithSegment(segTwo)
 /*
 {
   hasIntersection: true,
@@ -388,4 +438,26 @@ const line =
   t2: { value: 0.5 }
 }
 */
+
+// Intersection with a line
+segOne.intersectionWithLine(line)
+/*
+{
+  hasIntersection: true,
+  point: { x: 25, y: 10 },
+  t1: { value: 0.5 }
+}
+*/
 ```
+
+## Line
+
+## Arc
+
+## Rect
+
+## Circle
+
+## Quadratic Equation
+
+## Affine Transformation
