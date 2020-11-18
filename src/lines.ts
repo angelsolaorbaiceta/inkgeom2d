@@ -1,7 +1,7 @@
 import Line from './line'
+import Projectable from './projectable'
 import Vector from './vector'
 import vectors from './vectors'
-import Projectable from './projectable'
 
 const lines = {
   makeVertical(x: number): Line {
@@ -13,10 +13,7 @@ const lines = {
   },
 
   makeBetween(start: Projectable, end: Projectable): Line {
-    return new Line(
-      new Vector(start.x, start.y),
-      vectors.makeBetween(start, end)
-    )
+    return new Line(start, vectors.makeBetween(start, end))
   }
 }
 

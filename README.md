@@ -1,6 +1,6 @@
 # InkGeom 2D
 
-A small and fast 2D geometry library without external dependencies.
+A small and fast 2D geometry library with no external dependencies.
 
 The geometry library behind [InkStructure app](https://www.inkstructure.com/).
 
@@ -34,11 +34,13 @@ npm install ink-geom2d
   - [Segment Operations](<#Segment Operations>)
   - [Segment Intersections](<#Segment Intersections>)
 - [Line](#Line)
+  - [Line Parallelism & Perpendicularity](<#Line Parallelism & Perpendicularity>)
+  - [Line Intersections](<#Line Intersections>)
 - [Arc](#Arc)
 - [Rect](#Rect)
 - [Circle](#Circle)
-- Quadratic Equation
-- Affine Transformation
+- [Quadratic Equation](<#Quadratic Equation>)
+- [Affine Transformation](<#Affine Transformation>)
 
 ## Numbers
 
@@ -451,6 +453,121 @@ segOne.intersectionWithLine(line)
 ```
 
 ## Line
+
+A `Line` class represents an infinite line described by a base point and a direction vector.
+
+```ts
+import { Line } from 'ink-geom2d'
+
+// Create a line
+const line = new Line({ x: 5, y: 10 }, { x: 1, y: 1 })
+/*
+{
+  base: { x: 5, y: 10 },
+  direction: { x: 1, y: 1, _length: 1.414 },
+  directionVersor: { x: 0.707, y: 0.707}
+}
+*/
+
+// is horizontal?
+line.isHorizontal // false
+
+// is vertical?
+line.isVertical // false
+
+// x intercept (the value for x where y = 0)
+// The x intercept can be `undefined` if the line is horizontal
+line.xIntercept // -5
+
+// y intercept (the value for y where x = 0)
+// The y intercept can be `undefined` if the line is vertical
+line.yIntercept // 5
+
+// get the x value for a given y value
+line.xAtY(20) // 15
+
+// get the y value for a given x value
+line.yAtX(20) // 25
+```
+
+### Line Parallelism & Perpendicularity
+
+```ts
+import { Line } from 'ink-geom2d'
+
+const lineOne = new Line({ x: 0, y: 5 }, { x: 1, y: 1 })
+const lineTwo = new Line({ x: 5, y: 15 }, { x: 1, y: 1 })
+
+// Check if two lines are parallel
+lineOne.isParallelTo(lineTwo) // true
+
+// Check if two lines are perpendicular
+lineOne.isPerpendicularTo(lineTwo) // false
+```
+
+### Line Intersections
+
+```ts
+import { Line } from 'ink-geom2d'
+
+const lineOne = new Line({ x: 0, y: 5 }, { x: 1, y: 1 })
+const lineTwo = new Line({ x: 5, y: 15 }, { x: 1, y: 1 })
+const lineThree = new Line({ x: 15, y: 0 }, { x: -1, y: 1 })
+
+// Intersection between two lines
+lineOne.intersectionWith(lineTwo)
+/*
+{ 
+  hasIntersection: false 
+}
+*/
+
+lineOne.intersectionWith(lineThree)
+/*
+{ 
+  hasIntersection: true, 
+  point: { x: 5, y: 10 } 
+}
+*/
+```
+
+### Line Factories
+
+You can use the line factory functions to create lines:
+
+```ts
+const { lines } from 'ink-geom2d'
+
+// make a horizontal line
+lines.makeHorizontal(5)
+/*
+{
+  base: { x: 0, y: 5 },
+  direction: { x: 1, y: 0, _length: 1 },
+  directionVersor: { x: 1, y: 0, _length: 1 }
+}
+*/
+
+// make a vertical line
+lines.makeVertical(2)
+/*
+{
+  base: { x: 2, y: 0 },
+  direction: { x: 0, y: 1, _length: 1 },
+  directionVersor: { x: 0, y: 1, _length: 1 }
+}
+*/
+
+// make a line in the direction that goes from a point to another point
+lines.makeBetween({ x: 0, y: 5 }, { x: 30, y: 30 })
+/*
+{
+  base: { x: 0, y: 5 },
+  direction: { x: 30, y: 25, _length: 39.05124837953327 },
+  directionVersor: { x: 0.7682212795973759, y: 0.6401843996644799 }
+}
+*/
+```
 
 ## Arc
 
