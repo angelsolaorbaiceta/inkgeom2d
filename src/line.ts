@@ -1,9 +1,9 @@
-import { Projectable } from 'src'
 import {
   IntersectionLineLine,
   lineLineNoIntersection
 } from './intersection.types'
 import numbers from './numbers'
+import Projectable from './projectable'
 import Vector from './vector'
 
 export default class Line {
