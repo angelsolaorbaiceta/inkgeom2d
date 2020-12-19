@@ -4,7 +4,7 @@
     "outDir": "./dist",
     "declaration": true,
     "target": "ES6",
-    "module": "esnext",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "types": ["jest"],
