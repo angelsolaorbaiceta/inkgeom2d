@@ -1,6 +1,6 @@
 # InkGeom 2D
 
-A small and fast 2D geometry library with no external dependencies.
+A small, three-shakable and fast 2D geometry library with no external dependencies.
 
 The geometry library behind [InkStructure app](https://www.inkstructure.com/).
 

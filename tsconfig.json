@@ -8,7 +8,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "types": ["jest"],
-    "sourceMap": true,
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
     "esModuleInterop": true
