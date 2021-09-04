@@ -55,6 +55,13 @@ describe('A Rect', () => {
     expect(rect.toPolygon()).toEqual(expectedPolygon)
   })
 
+  it('can create a new rectangle adding a given margin', () => {
+    const rect = new Rect({ x: 0, y: 0 }, { width: 30, height: 10 }).withMargin(
+      5
+    )
+    expect(rect).toEqual(new Rect({ x: -5, y: -5 }, { width: 40, height: 20 }))
+  })
+
   describe('contains point', () => {
     it('does not contain a point outside its bounds', () => {
       const outsidePoint = { x: 500, y: 700 }

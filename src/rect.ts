@@ -117,4 +117,16 @@ export default class Rect {
       new Vector(this.left, this.top)
     ])
   }
+
+  withMargin(margin: number): Rect {
+    const twoMargins = 2 * margin
+
+    return new Rect(
+      { x: this.left - margin, y: this.bottom - margin },
+      {
+        width: this.size.width + twoMargins,
+        height: this.size.height + twoMargins
+      }
+    )
+  }
 }
