@@ -73,6 +73,7 @@ describe('Angle', () => {
     ${270}  | ${Angle.fromDegrees(270)} | ${Quadrant.Fourth}
     ${300}  | ${Angle.fromDegrees(300)} | ${Quadrant.Fourth}
     ${360}  | ${Angle.fromDegrees(360)} | ${Quadrant.Fourth}
+    ${380}  | ${Angle.fromDegrees(380)} | ${Quadrant.First}
   `(
     'an angle of %angle is on the %quadrant quadrant',
     ({ angle, quadrant }) => {
