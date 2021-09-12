@@ -1,5 +1,5 @@
 import { Angle } from './angle'
-import numbers from './numbers'
+import { numbers } from './numbers'
 import Projectable, { distanceBetween } from './projectable'
 
 export default class Vector implements Projectable {

@@ -1,4 +1,4 @@
-import numbers from './numbers'
+import { numbers } from './numbers'
 import { Quadrant } from './quadrant'
 import Vector from './vector'
 

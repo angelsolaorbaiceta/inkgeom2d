@@ -1,6 +1,6 @@
 const defaultEpsilon = 1e-10
 
-const numbers = {
+export const numbers = {
   areCloseEnough(
     a: number,
     b: number,
@@ -70,6 +70,4 @@ const numbers = {
       }
     }
   }
-}
-
-export default numbers
+} as const

@@ -1,6 +1,6 @@
 import { Line } from './line'
 import { lines } from './lines'
-import numbers from './numbers'
+import { numbers } from './numbers'
 import Projectable from './projectable'
 import { zip } from './utils/arrays'
 import Vector from './vector'

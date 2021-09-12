@@ -1,4 +1,4 @@
-import numbers from './numbers'
+import { numbers } from './numbers'
 
 const MIN = 0
 const MAX = 1

@@ -1,4 +1,4 @@
-import numbers from '../src/numbers'
+import { numbers } from '../src/numbers'
 
 describe('Numbers', () => {
   it('are not close enough given tolerance', () => {
