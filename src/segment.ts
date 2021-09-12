@@ -18,21 +18,32 @@ import Vector from './vector'
 import vectors from './vectors'
 
 export default class Segment {
+  /** Segmen't start point: point at `t = 0`. */
   readonly start: Vector
+  /** Segmen't end point: point at `t = 1`. */
   readonly end: Vector
+  /** Segmen't middle point: point at `t = 0.5`. */
   readonly middle: Vector
 
+  /** Segment's length: the distance between the start and end points. */
   readonly length: number
+  /** Segment's length horizontal projection. */
   readonly width: number
+  /** Segment's length vertical projection. */
   readonly height: number
+  /** Vector going from the start to the end point. */
   readonly directionVector: Vector
+  /** A normalized version of the `directionVector`. */
   readonly directionVersor: Vector
+  /** Versor perpendicular go the `directionVersor`. */
   readonly normalVersor: Vector
 
+  /** Rectangle containing the segment. */
   get rectBounds(): Rect {
     return rects.makeContainingPoints([this.start, this.end])
   }
 
+  /** Circle containing the segment. */
   get circleBounds(): Circle {
     return new Circle(this.middle, 0.5 * this.length)
   }
@@ -49,14 +60,38 @@ export default class Segment {
     this.normalVersor = this.directionVersor.perpendicular()
   }
 
+  /**
+   * Creates a `Line` using the segment's start point as its base point and
+   * the segment's `directionVector` as the direction.
+   *
+   * @returns `Line`
+   */
   asLine(): Line {
     return new Line(this.start, this.directionVector)
   }
 
+  /**
+   * Returns a point in the segment at the given t position.
+   *
+   * When `t = 0`, it returns the start point. When `t = 1` it returns the
+   * end point.
+   *
+   * @param t T Parameter value
+   * @returns `Point` in the segment
+   */
   pointAt(t: TParam): Vector {
     return this.start.displaced(this.directionVector, t.value)
   }
 
+  /**
+   * Creates a new segment parallel to this one, at a given distance in the
+   * `normalVersor` direction.
+   *
+   * Use a negative distance for a segment on the opposite side.
+   *
+   * @param distance `number`
+   * @returns segment parallel to this one
+   */
   parallelAtDistance(distance: number): Segment {
     return new Segment(
       this.start.displaced(this.normalVersor, distance),
@@ -84,7 +119,14 @@ export default class Segment {
     return vectors.compare(this.start, this.end) <= 0 ? this : this.flipped()
   }
 
-  closestPointTo(point: Projectable): ClosestPointResult {
+  /**
+   * Returns the segmen's closest point (and its t position) to a given
+   * external point.
+   *
+   * @param point external point
+   * @returns closest point in the segment and its t value
+   */
+  closestPointTo(point: Projectable): Readonly<ClosestPointResult> {
     const v = vectors.makeBetween(this.start, point)
     const vs = v.projectedOver(this.directionVersor)
 
@@ -102,22 +144,51 @@ export default class Segment {
     }
   }
 
+  /**
+   * Returns the distance from an external point to the segment's closest point.
+   *
+   * @param point external point
+   * @returns distance to the segment
+   */
   distanceToPoint(point: Projectable): number {
     const { point: closest } = this.closestPointTo(point)
     return closest.distanceTo(point)
   }
 
-  containsPoint(p: Projectable, maxDistance = 1e-5): ContainsPointResult {
+  /**
+   * Returns `true` if the given point is closer to the segment than a given
+   * maximum distance.
+   *
+   * @param p external point
+   * @param maxDistance maximum distance allowed
+   * @returns whether the point is close enough to the segment
+   */
+  containsPoint(
+    p: Projectable,
+    maxDistance = 1e-5
+  ): Readonly<ContainsPointResult> {
     const { point, t } = this.closestPointTo(p)
 
     if (point.distanceTo(p) > maxDistance) {
       return noContainsPointResult
     }
 
-    return Object.freeze({ contains: true, t, point })
+    return { contains: true, t, point }
   }
 
-  intersectionWithSegment(other: Segment): IntersectionSegmentSegment {
+  /**
+   * Computes the intersection of this segment with another one.
+   *
+   * If an intersection point is found, it retuns it along with the t parameter
+   * values that locate the point in both this and the other segment: `t1` and
+   * `t2`.
+   *
+   * @param other `Segment`
+   * @returns intersection result
+   */
+  intersectionWithSegment(
+    other: Segment
+  ): Readonly<IntersectionSegmentSegment> {
     const d1 = this.directionVector
     const d2 = other.directionVector
 
@@ -134,18 +205,27 @@ export default class Segment {
       const t1 = TParam.tryMake(t1Val)
       const t2 = TParam.tryMake(t2Val)
 
-      return Object.freeze({
+      return {
         hasIntersection: true,
         point: this.pointAt(t1),
         t1,
         t2
-      })
+      }
     }
 
     return segSegNoIntersection
   }
 
-  intersectionWithLine(line: Line): IntesectionSegmentLine {
+  /**
+   * Computes the intersection between this segment and a line.
+   *
+   * If an intersection point is found, it retuns it along with the t parameter
+   * value that locate the point in this segment.
+   *
+   * @param line `Line`
+   * @returns intersection result
+   */
+  intersectionWithLine(line: Line): Readonly<IntesectionSegmentLine> {
     const { point } = this.asLine().intersectionWith(line)
 
     if (!point) return segSegNoIntersection
@@ -153,21 +233,37 @@ export default class Segment {
     const { contains, t } = this.containsPoint(point)
 
     if (contains && t) {
-      return Object.freeze({
+      return {
         hasIntersection: true,
         point,
         t1: t
-      })
+      }
     }
 
     return segSegNoIntersection
   }
 
+  /**
+   * Splits this segment in two, at the given t parameter's position.
+   *
+   * If `t = 0`, the first segment will have a length of zero. Similarly, if
+   * `t = 1` the second segment will have a length of zero.
+   *
+   * @param t split position
+   * @returns two segments
+   */
   split(t: TParam): [Segment, Segment] {
     const p = this.pointAt(t)
     return [new Segment(this.start, p), new Segment(p, this.end)]
   }
 
+  /**
+   * Compares this and other segment. It returns `true` if both have the same
+   * start and end points.
+   *
+   * @param other `Segment`
+   * @returns whether the two segments are equal
+   */
   equals(other: Segment): boolean {
     return this.start.equals(other.start) && this.end.equals(other.end)
   }

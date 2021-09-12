@@ -27,6 +27,7 @@ export interface IntersectionSegmentSegment {
 
 export type IntesectionSegmentLine = IntersectionSegmentSegment
 
-export const segSegNoIntersection: IntersectionSegmentSegment = Object.freeze({
-  hasIntersection: false
-})
+export const segSegNoIntersection: Readonly<IntersectionSegmentSegment> =
+  Object.freeze({
+    hasIntersection: false
+  })
