@@ -6,7 +6,7 @@ import {
   segSegNoIntersection
 } from './intersection.types'
 import { Line } from './line'
-import Projectable, { distanceBetween } from './projectable'
+import { distanceBetween, Projectable } from './projectable'
 import { Rect } from './rect'
 import { rects } from './rects'
 import {
@@ -15,8 +15,8 @@ import {
   noContainsPointResult
 } from './segment.types'
 import TParam from './tParam'
-import Vector from './vector'
-import vectors from './vectors'
+import { Vector } from './vector'
+import { vectors } from './vectors'
 
 export class Segment {
   /** Segmen't start point: point at `t = 0`. */

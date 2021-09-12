@@ -1,4 +1,4 @@
-export default interface Projectable {
+export interface Projectable {
   readonly x: number
   readonly y: number
 }

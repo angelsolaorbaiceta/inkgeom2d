@@ -3,8 +3,8 @@ import {
   lineLineNoIntersection
 } from './intersection.types'
 import { numbers } from './numbers'
-import Projectable from './projectable'
-import Vector from './vector'
+import { Projectable } from './projectable'
+import { Vector } from './vector'
 
 export class Line {
   readonly base: Vector

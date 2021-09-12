@@ -1,5 +1,5 @@
-import Vector from './vector'
-import Projectable from './projectable'
+import { Vector } from './vector'
+import { Projectable } from './projectable'
 
 export class Circle {
   readonly center: Vector

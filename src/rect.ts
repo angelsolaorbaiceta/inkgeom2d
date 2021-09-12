@@ -1,9 +1,9 @@
 import { Line } from './line'
 import { Polygon } from './polygon'
-import Projectable, { origin } from './projectable'
+import { origin, Projectable } from './projectable'
 import { Segment } from './segment'
 import Size, { nilSize } from './size'
-import Vector from './vector'
+import { Vector } from './vector'
 
 export class Rect {
   readonly origin: Vector

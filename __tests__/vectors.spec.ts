@@ -1,6 +1,6 @@
-import Vector from '../src/vector'
-import vectors from '../src/vectors'
 import { origin } from '../src/projectable'
+import { Vector } from '../src/vector'
+import { vectors } from '../src/vectors'
 
 describe('Vectors', () => {
   describe('factories', () => {

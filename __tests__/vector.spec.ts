@@ -1,4 +1,4 @@
-import Vector from '../src/vector'
+import { Vector } from '../src/vector'
 
 describe('Vector', () => {
   const u = new Vector(2, 3)

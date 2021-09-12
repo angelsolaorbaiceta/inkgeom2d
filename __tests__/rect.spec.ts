@@ -3,7 +3,7 @@ import { lines } from '../src/lines'
 import { Polygon } from '../src/polygon'
 import { Rect } from '../src/rect'
 import { Segment } from '../src/segment'
-import Vector from '../src/vector'
+import { Vector } from '../src/vector'
 
 describe('A Rect', () => {
   const rect = Rect.make(2, 4, 10, 20)

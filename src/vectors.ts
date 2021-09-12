@@ -1,11 +1,11 @@
 import { Line } from './line'
 import { lines } from './lines'
 import { numbers } from './numbers'
-import Projectable from './projectable'
+import { Projectable } from './projectable'
 import { zip } from './utils/arrays'
-import Vector from './vector'
+import { Vector } from './vector'
 
-const vectors = {
+export const vectors = {
   uVersor: new Vector(1, 0),
   vVersor: new Vector(0, 1),
 
@@ -93,6 +93,4 @@ const vectors = {
 
     return zip(xDivs, yDivs).map(([x, y]) => new Vector(x ?? 0, y ?? 0))
   }
-}
-
-export default vectors
+} as const

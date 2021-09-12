@@ -2,7 +2,7 @@ import { AffineTransf } from '../src/affineTransf'
 import { transforms } from '../src/affineTransfs'
 import { Angle } from '../src/angle'
 import { Rect } from '../src/rect'
-import Vector from '../src/vector'
+import { Vector } from '../src/vector'
 
 describe('Affine Transformation factories', () => {
   const origin = Vector.origin

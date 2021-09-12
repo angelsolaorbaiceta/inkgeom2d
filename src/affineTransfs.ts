@@ -1,10 +1,10 @@
 import { AffineTransf } from './affineTransf'
 import { Angle } from './angle'
-import Projectable from './projectable'
+import { Projectable } from './projectable'
 import { Rect } from './rect'
 import { zipWith } from './utils/arrays'
-import Vector from './vector'
-import vectors from './vectors'
+import { Vector } from './vector'
+import { vectors } from './vectors'
 
 export const transforms = {
   makeTranslation(tx: number, ty: number) {

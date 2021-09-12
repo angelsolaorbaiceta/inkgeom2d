@@ -3,13 +3,13 @@ import { Arc } from './arc'
 import { Line } from './line'
 import { numbers } from './numbers'
 import { Polygon } from './polygon'
-import Projectable from './projectable'
+import { Projectable } from './projectable'
 import { solveQuadEq } from './quadraticEq'
 import { QuadEqSolution } from './quadraticEqSolution'
 import { Rect } from './rect'
 import { Segment } from './segment'
 import Size from './size'
-import Vector from './vector'
+import { Vector } from './vector'
 
 const DECIMALS = 3
 

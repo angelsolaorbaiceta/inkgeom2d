@@ -1,7 +1,7 @@
 import { Line } from './line'
-import Projectable from './projectable'
-import Vector from './vector'
-import vectors from './vectors'
+import { Projectable } from './projectable'
+import { Vector } from './vector'
+import { vectors } from './vectors'
 
 export const lines = {
   makeVertical(x: number): Line {

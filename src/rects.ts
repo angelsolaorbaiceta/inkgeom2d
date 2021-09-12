@@ -1,4 +1,4 @@
-import Projectable from './projectable'
+import { Projectable } from './projectable'
 import { Rect } from './rect'
 
 export const rects = {

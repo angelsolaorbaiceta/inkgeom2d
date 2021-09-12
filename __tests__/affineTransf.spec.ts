@@ -14,7 +14,7 @@ import {
   solutionIsRealSingle
 } from '../src/quadraticEqSolution'
 import { Rect } from '../src/rect'
-import Vector from '../src/vector'
+import { Vector } from '../src/vector'
 
 describe('An Affine Transformation', () => {
   const point = new Vector(2, 3)

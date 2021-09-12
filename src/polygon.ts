@@ -1,14 +1,14 @@
 import { Angle } from './angle'
 import { IntersectionPolygonSegment } from './intersection.types'
 import { numbers } from './numbers'
-import Projectable from './projectable'
+import { Projectable } from './projectable'
 import { Rect } from './rect'
 import { rects } from './rects'
 import { Segment } from './segment'
 import { isEmpty } from './utils/arrays'
 import { makeRoundPairs } from './utils/pairs'
-import Vector from './vector'
-import vectors from './vectors'
+import { Vector } from './vector'
+import { vectors } from './vectors'
 
 export class Polygon {
   private _sides: Segment[] | undefined
