@@ -2,7 +2,7 @@ import { Line } from './line'
 import { Polygon } from './polygon'
 import { origin, Projectable } from './projectable'
 import { Segment } from './segment'
-import Size, { nilSize } from './size'
+import { nilSize, Size } from './size'
 import { Vector } from './vector'
 
 export class Rect {

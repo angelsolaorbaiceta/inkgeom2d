@@ -8,7 +8,7 @@ import { solveQuadEq } from './quadraticEq'
 import { QuadEqSolution } from './quadraticEqSolution'
 import { Rect } from './rect'
 import { Segment } from './segment'
-import Size from './size'
+import { Size } from './size'
 import { Vector } from './vector'
 
 const DECIMALS = 3
