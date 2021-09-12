@@ -18,7 +18,7 @@ import TParam from './tParam'
 import Vector from './vector'
 import vectors from './vectors'
 
-export default class Segment {
+export class Segment {
   /** Segmen't start point: point at `t = 0`. */
   readonly start: Vector
   /** Segmen't end point: point at `t = 1`. */

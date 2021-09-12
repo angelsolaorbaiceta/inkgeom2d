@@ -7,7 +7,7 @@ import Projectable from './projectable'
 import { solveQuadEq } from './quadraticEq'
 import { QuadEqSolution } from './quadraticEqSolution'
 import Rect from './rect'
-import Segment from './segment'
+import { Segment } from './segment'
 import Size from './size'
 import Vector from './vector'
 

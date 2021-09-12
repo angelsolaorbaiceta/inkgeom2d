@@ -1,8 +1,8 @@
-import Segment from '../src/segment'
-import TParam from '../src/tParam'
-import Vector from '../src/vector'
 import Line from '../src/line'
 import { Quadrant } from '../src/quadrant'
+import { Segment } from '../src/segment'
+import TParam from '../src/tParam'
+import Vector from '../src/vector'
 
 describe('A Segment', () => {
   const start = new Vector(400, 0)

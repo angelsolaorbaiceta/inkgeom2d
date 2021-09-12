@@ -1,6 +1,6 @@
 import Vector from './vector'
 import Angle from './angle'
-import Segment from './segment'
+import { Segment } from './segment'
 import numbers from './numbers'
 
 export default class Arc {

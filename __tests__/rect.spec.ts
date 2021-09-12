@@ -2,7 +2,7 @@ import Line from '../src/line'
 import lines from '../src/lines'
 import Polygon from '../src/polygon'
 import Rect from '../src/rect'
-import Segment from '../src/segment'
+import { Segment } from '../src/segment'
 import Vector from '../src/vector'
 
 describe('A Rect', () => {

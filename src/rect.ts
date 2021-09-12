@@ -1,6 +1,6 @@
 import Line from './line'
 import Projectable, { origin } from './projectable'
-import Segment from './segment'
+import { Segment } from './segment'
 import Size, { nilSize } from './size'
 import Vector from './vector'
 import Polygon from './polygon'

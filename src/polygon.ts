@@ -4,7 +4,7 @@ import numbers from './numbers'
 import Projectable from './projectable'
 import Rect from './rect'
 import rects from './rects'
-import Segment from './segment'
+import { Segment } from './segment'
 import { isEmpty } from './utils/arrays'
 import { makeRoundPairs } from './utils/pairs'
 import Vector from './vector'
@@ -78,9 +78,10 @@ export default class Polygon {
       points: points
     }
   }
-  containsSegment(
-    segment: Segment
-  ): { partially: boolean; completely: boolean } {
+  containsSegment(segment: Segment): {
+    partially: boolean
+    completely: boolean
+  } {
     const completely =
       this.containsPoint(segment.start) &&
       this.containsPoint(segment.end) &&
