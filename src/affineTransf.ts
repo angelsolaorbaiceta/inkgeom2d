@@ -1,5 +1,5 @@
 import { Angle } from './angle'
-import Arc from './arc'
+import { Arc } from './arc'
 import Line from './line'
 import numbers from './numbers'
 import Polygon from './polygon'
