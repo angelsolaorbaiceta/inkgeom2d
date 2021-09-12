@@ -74,9 +74,14 @@ export default class Segment {
     return new Segment(this.end, this.start)
   }
 
+  /**
+   * If the start and end points of this segment are already ordered, it returns
+   * this segment. If not, the flipped segment with ordered points is returned.
+   *
+   * @returns `Segment` with ordered points
+   */
   withOrderedPoints(): Segment {
-    if (vectors.compare(this.start, this.end) <= 0) return this
-    else return new Segment(this.end, this.start)
+    return vectors.compare(this.start, this.end) <= 0 ? this : this.flipped()
   }
 
   closestPointTo(point: Projectable): ClosestPointResult {
