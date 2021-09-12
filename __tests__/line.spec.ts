@@ -1,6 +1,6 @@
-import Line from '../src/line'
-import Vector from '../src/vector'
 import { lineLineNoIntersection } from '../src/intersection.types'
+import { Line } from '../src/line'
+import Vector from '../src/vector'
 
 describe('A Line', () => {
   it('cannot intersect with another parallel line', () => {

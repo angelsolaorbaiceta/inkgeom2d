@@ -1,9 +1,9 @@
-import Line from './line'
+import { Line } from './line'
 import Projectable from './projectable'
 import Vector from './vector'
 import vectors from './vectors'
 
-const lines = {
+export const lines = {
   makeVertical(x: number): Line {
     return new Line(new Vector(x, 0), vectors.vVersor)
   },
@@ -15,6 +15,4 @@ const lines = {
   makeBetween(start: Projectable, end: Projectable): Line {
     return new Line(start, vectors.makeBetween(start, end))
   }
-}
-
-export default lines
+} as const

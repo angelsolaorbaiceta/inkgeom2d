@@ -6,7 +6,7 @@ import numbers from './numbers'
 import Projectable from './projectable'
 import Vector from './vector'
 
-export default class Line {
+export class Line {
   readonly base: Vector
   readonly direction: Vector
   readonly directionVersor: Vector

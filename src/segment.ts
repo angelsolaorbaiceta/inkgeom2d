@@ -5,7 +5,7 @@ import {
   IntesectionSegmentLine,
   segSegNoIntersection
 } from './intersection.types'
-import Line from './line'
+import { Line } from './line'
 import Projectable, { distanceBetween } from './projectable'
 import { Rect } from './rect'
 import { rects } from './rects'

@@ -1,5 +1,5 @@
-import Line from '../src/line'
-import lines from '../src/lines'
+import { Line } from '../src/line'
+import { lines } from '../src/lines'
 import { Polygon } from '../src/polygon'
 import { Rect } from '../src/rect'
 import { Segment } from '../src/segment'

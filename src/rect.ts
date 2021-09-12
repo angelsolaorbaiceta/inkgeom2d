@@ -1,4 +1,4 @@
-import Line from './line'
+import { Line } from './line'
 import { Polygon } from './polygon'
 import Projectable, { origin } from './projectable'
 import { Segment } from './segment'
