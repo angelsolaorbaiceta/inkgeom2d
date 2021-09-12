@@ -1,7 +1,7 @@
 export { AffineTransf } from './affineTransf'
 export { transforms } from './affineTransfs'
 export { Angle } from './angle'
-export { default as angles } from './angles'
+export { angles } from './angles'
 export { default as Arc } from './arc'
 export { default as Circle } from './circle'
 export * from './intersection.types'
