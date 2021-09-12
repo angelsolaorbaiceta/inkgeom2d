@@ -1,4 +1,4 @@
-import Angle from './angle'
+import { Angle } from './angle'
 
 export class ComplexNumber {
   readonly re: number

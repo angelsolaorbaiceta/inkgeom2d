@@ -1,4 +1,4 @@
-import Angle from './angle'
+import { Angle } from './angle'
 import { IntersectionPolygonSegment } from './intersection.types'
 import numbers from './numbers'
 import Projectable from './projectable'

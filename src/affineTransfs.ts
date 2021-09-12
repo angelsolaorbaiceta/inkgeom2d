@@ -1,5 +1,5 @@
 import { AffineTransf } from './affineTransf'
-import Angle from './angle'
+import { Angle } from './angle'
 import Projectable from './projectable'
 import Rect from './rect'
 import { zipWith } from './utils/arrays'

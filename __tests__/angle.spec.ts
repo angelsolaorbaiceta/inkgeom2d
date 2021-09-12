@@ -1,4 +1,4 @@
-import Angle from '../src/angle'
+import { Angle } from '../src/angle'
 import { Quadrant } from '../src/quadrant'
 
 describe('Angle', () => {

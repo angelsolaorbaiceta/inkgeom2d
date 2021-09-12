@@ -1,6 +1,6 @@
 import { AffineTransf } from '../src/affineTransf'
 import { transforms } from '../src/affineTransfs'
-import Angle from '../src/angle'
+import { Angle } from '../src/angle'
 import Arc from '../src/arc'
 import Line from '../src/line'
 import lines from '../src/lines'

@@ -17,7 +17,7 @@ function degreesToRadians(degrees: number): number {
   return (degrees * Math.PI) / 180
 }
 
-export default class Angle {
+export class Angle {
   readonly radians: number
   readonly degrees: number
 

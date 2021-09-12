@@ -1,7 +1,7 @@
-import Vector from './vector'
-import Angle from './angle'
-import { Segment } from './segment'
+import { Angle } from './angle'
 import numbers from './numbers'
+import { Segment } from './segment'
+import Vector from './vector'
 
 export default class Arc {
   readonly startSegment: Segment

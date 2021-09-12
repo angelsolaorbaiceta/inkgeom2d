@@ -1,4 +1,4 @@
-import Angle from './angle'
+import { Angle } from './angle'
 import Arc from './arc'
 import Line from './line'
 import numbers from './numbers'
