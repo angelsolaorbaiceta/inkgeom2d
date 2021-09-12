@@ -40,8 +40,6 @@ export default class Vector implements Projectable {
     return Vector.jVersor.angleTo(this)
   }
 
-  /* <-- CONSTRUCTORS --> */
-
   constructor(x: number, y: number) {
     this.x = x
     this.y = y
@@ -55,8 +53,6 @@ export default class Vector implements Projectable {
     if (p instanceof Vector) return p
     return new Vector(p.x, p.y)
   }
-
-  /* <-- METHODS --> */
 
   normalized(): Vector {
     if (this.isUnit) return this

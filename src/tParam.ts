@@ -34,4 +34,8 @@ export default class TParam {
   static makeValid(value: number): TParam {
     return new TParam(numbers.clamp(value).between(MIN, MAX))
   }
+
+  equals(other: TParam): boolean {
+    return numbers.areCloseEnough(this.value, other.value)
+  }
 }
