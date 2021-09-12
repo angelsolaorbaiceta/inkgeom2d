@@ -64,6 +64,16 @@ export default class Segment {
     )
   }
 
+  /**
+   * Returns a new `Segment` result of swapping the start and end points of
+   * this segment.
+   *
+   * @returns `Segment`
+   */
+  flipped(): Segment {
+    return new Segment(this.end, this.start)
+  }
+
   withOrderedPoints(): Segment {
     if (vectors.compare(this.start, this.end) <= 0) return this
     else return new Segment(this.end, this.start)

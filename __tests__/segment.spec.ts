@@ -81,6 +81,13 @@ describe('A Segment', () => {
     })
   })
 
+  it('can be flipped', () => {
+    const actual = segment.flipped()
+    const expected = new Segment(end, start)
+
+    expect(actual).toEqual(expected)
+  })
+
   describe('with ordered points', () => {
     it('should return itself for ordered point version', () => {
       const s = new Segment(new Vector(0, 0), new Vector(200, 200))
