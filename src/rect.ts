@@ -1,12 +1,11 @@
 import Line from './line'
+import { Polygon } from './polygon'
 import Projectable, { origin } from './projectable'
 import { Segment } from './segment'
 import Size, { nilSize } from './size'
 import Vector from './vector'
-import Polygon from './polygon'
 
-export default class Rect {
-  /* <-- DATA --> */
+export class Rect {
   readonly origin: Vector
   readonly size: Size
 
@@ -15,7 +14,6 @@ export default class Rect {
   readonly top: number
   readonly bottom: number
 
-  /* <-- PROPERTIES --> */
   get area(): number {
     return this.size.width * this.size.height
   }
@@ -35,10 +33,8 @@ export default class Rect {
     return { x: this.right, y: this.bottom }
   }
 
-  /* <-- CONSTANTS --> */
   static readonly nil = new Rect(origin, nilSize)
 
-  /* <-- CONSTRUCTORS --> */
   constructor(origin: Projectable, size: Size) {
     this.origin = Vector.fromProjectable(origin)
     this.size = size
@@ -53,7 +49,6 @@ export default class Rect {
     return new Rect({ x, y }, { width, height })
   }
 
-  /* <-- METHODS --> */
   containsPoint({ x, y }: Projectable): boolean {
     return x > this.left && x < this.right && y > this.bottom && y < this.top
   }

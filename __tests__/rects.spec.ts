@@ -1,5 +1,5 @@
-import Rect from '../src/rect'
-import rects from '../src/rects'
+import { Rect } from '../src/rect'
+import { rects } from '../src/rects'
 
 describe('Rectangle factories', () => {
   const p = { x: 0, y: 5 }

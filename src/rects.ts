@@ -1,7 +1,7 @@
 import Projectable from './projectable'
-import Rect from './rect'
+import { Rect } from './rect'
 
-const rects = {
+export const rects = {
   makeContainingPoints(points: Projectable[]): Rect {
     if (points.length < 1) {
       throw new Error("Can't create rect containing less than one point")
@@ -46,6 +46,4 @@ const rects = {
     const origin = { x: center.x - 0.5 * width, y: center.y - 0.5 * height }
     return new Rect(origin, { width, height })
   }
-}
-
-export default rects
+} as const

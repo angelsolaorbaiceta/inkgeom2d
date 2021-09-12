@@ -1,5 +1,5 @@
 import { Quadrant } from 'src'
-import Circle from './circle'
+import { Circle } from './circle'
 import {
   IntersectionSegmentSegment,
   IntesectionSegmentLine,
@@ -7,8 +7,8 @@ import {
 } from './intersection.types'
 import Line from './line'
 import Projectable, { distanceBetween } from './projectable'
-import Rect from './rect'
-import rects from './rects'
+import { Rect } from './rect'
+import { rects } from './rects'
 import {
   ClosestPointResult,
   ContainsPointResult,

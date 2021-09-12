@@ -4,7 +4,7 @@ import { Angle } from '../src/angle'
 import { Arc } from '../src/arc'
 import Line from '../src/line'
 import lines from '../src/lines'
-import Polygon from '../src/polygon'
+import { Polygon } from '../src/polygon'
 import { origin } from '../src/projectable'
 import {
   ComplexSolution,
@@ -13,7 +13,7 @@ import {
   solutionIsRealDual,
   solutionIsRealSingle
 } from '../src/quadraticEqSolution'
-import Rect from '../src/rect'
+import { Rect } from '../src/rect'
 import Vector from '../src/vector'
 
 describe('An Affine Transformation', () => {

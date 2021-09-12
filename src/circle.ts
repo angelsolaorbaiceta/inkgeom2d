@@ -1,7 +1,7 @@
 import Vector from './vector'
 import Projectable from './projectable'
 
-export default class Circle {
+export class Circle {
   readonly center: Vector
   readonly radius: number
 

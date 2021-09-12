@@ -3,7 +3,7 @@ import numbers from './numbers'
 import { Segment } from './segment'
 import Vector from './vector'
 
-export default class Arc {
+export class Arc {
   readonly startSegment: Segment
   readonly endSegment: Segment
 
