@@ -13,7 +13,7 @@ import Vector from './vector'
 
 const DECIMALS = 3
 
-export default class AffineTransf {
+export class AffineTransf {
   public readonly sx: number
   public readonly sy: number
   public readonly shx: number

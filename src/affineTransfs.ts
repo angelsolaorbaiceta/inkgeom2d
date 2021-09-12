@@ -1,4 +1,4 @@
-import AffineTransf from './affineTransf'
+import { AffineTransf } from './affineTransf'
 import Angle from './angle'
 import Projectable from './projectable'
 import Rect from './rect'
@@ -6,7 +6,7 @@ import { zipWith } from './utils/arrays'
 import Vector from './vector'
 import vectors from './vectors'
 
-const transforms = {
+export const transforms = {
   makeTranslation(tx: number, ty: number) {
     return new AffineTransf(1, 1, tx, ty)
   },
@@ -59,6 +59,4 @@ const transforms = {
       a.append(b)
     )
   }
-}
-
-export default transforms
+} as const
