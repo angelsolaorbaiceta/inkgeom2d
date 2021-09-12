@@ -14,7 +14,7 @@ import {
   ContainsPointResult,
   noContainsPointResult
 } from './segment.types'
-import TParam from './tParam'
+import { TParam } from './tParam'
 import { Vector } from './vector'
 import { vectors } from './vectors'
 

@@ -1,5 +1,5 @@
+import { TParam } from './tParam'
 import { Vector } from './vector'
-import TParam from './tParam'
 
 export interface ClosestPointResult {
   readonly point: Vector

@@ -4,7 +4,7 @@ const MIN = 0
 const MAX = 1
 const MIDDLE = 0.5 * (MIN + MAX)
 
-export default class TParam {
+export class TParam {
   static readonly min = new TParam(MIN)
   static readonly middle = new TParam(MIDDLE)
   static readonly max = new TParam(MAX)
