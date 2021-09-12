@@ -1,4 +1,3 @@
-import { Quadrant } from 'src'
 import { Circle } from './circle'
 import {
   IntersectionSegmentSegment,
@@ -7,6 +6,7 @@ import {
 } from './intersection.types'
 import { Line } from './line'
 import { distanceBetween, Projectable } from './projectable'
+import { Quadrant } from './quadrant'
 import { Rect } from './rect'
 import { rects } from './rects'
 import {
