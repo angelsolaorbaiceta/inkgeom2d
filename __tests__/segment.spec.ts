@@ -2,6 +2,7 @@ import Segment from '../src/segment'
 import TParam from '../src/tParam'
 import Vector from '../src/vector'
 import Line from '../src/line'
+import { Quadrant } from '../src/quadrant'
 
 describe('A Segment', () => {
   const start = new Vector(400, 0)
@@ -62,6 +63,32 @@ describe('A Segment', () => {
 
     expect(one.equals(expectedOne)).toBeTruthy()
     expect(two.equals(expectedTwo)).toBeTruthy()
+  })
+
+  describe('quadrant', () => {
+    it('is on the first quadrant', () => {
+      expect(new Segment(Vector.origin, new Vector(100, 100)).quadrant).toBe(
+        Quadrant.First
+      )
+    })
+
+    it('is on the second quadrant', () => {
+      expect(new Segment(Vector.origin, new Vector(-100, 100)).quadrant).toBe(
+        Quadrant.Second
+      )
+    })
+
+    it('is on the third quadrant', () => {
+      expect(new Segment(Vector.origin, new Vector(-100, -100)).quadrant).toBe(
+        Quadrant.Third
+      )
+    })
+
+    it('is on the fourth quadrant', () => {
+      expect(new Segment(Vector.origin, new Vector(100, -100)).quadrant).toBe(
+        Quadrant.Fourth
+      )
+    })
   })
 
   describe('get point', () => {

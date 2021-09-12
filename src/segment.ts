@@ -1,3 +1,4 @@
+import { Quadrant } from 'src'
 import Circle from './circle'
 import {
   IntersectionSegmentSegment,
@@ -46,6 +47,11 @@ export default class Segment {
   /** Circle containing the segment. */
   get circleBounds(): Circle {
     return new Circle(this.middle, 0.5 * this.length)
+  }
+
+  /** Returns the segment direction versor angle's quadrant. */
+  get quadrant(): Quadrant {
+    return this.directionVersor.angleWithHorizontal.quadrant
   }
 
   constructor(start: Projectable, end: Projectable) {
