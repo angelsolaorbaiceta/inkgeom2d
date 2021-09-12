@@ -1,6 +1,6 @@
 {
   "name": "ink-geom2d",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "2D Geometry package",
   "module": "dist/index.js",
   "main": "dist/index.js",
