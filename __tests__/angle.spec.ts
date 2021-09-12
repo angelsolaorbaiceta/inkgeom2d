@@ -1,4 +1,5 @@
 import Angle from '../src/angle'
+import { Quadrant } from '../src/quadrant'
 
 describe('Angle', () => {
   it('can be constructed from degrees', () => {
@@ -60,4 +61,22 @@ describe('Angle', () => {
 
     expect(one.plus(two)).toEqual(Angle.fromDegrees(45))
   })
+
+  it.each`
+    degrees | angle                     | quadrant
+    ${0}    | ${Angle.fromDegrees(0)}   | ${Quadrant.First}
+    ${30}   | ${Angle.fromDegrees(30)}  | ${Quadrant.First}
+    ${90}   | ${Angle.fromDegrees(90)}  | ${Quadrant.Second}
+    ${120}  | ${Angle.fromDegrees(120)} | ${Quadrant.Second}
+    ${180}  | ${Angle.fromDegrees(180)} | ${Quadrant.Third}
+    ${210}  | ${Angle.fromDegrees(210)} | ${Quadrant.Third}
+    ${270}  | ${Angle.fromDegrees(270)} | ${Quadrant.Fourth}
+    ${300}  | ${Angle.fromDegrees(300)} | ${Quadrant.Fourth}
+    ${360}  | ${Angle.fromDegrees(360)} | ${Quadrant.Fourth}
+  `(
+    'an angle of %angle is on the %quadrant quadrant',
+    ({ angle, quadrant }) => {
+      expect(angle.quadrant).toBe(quadrant)
+    }
+  )
 })

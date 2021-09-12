@@ -29,7 +29,6 @@ export default class Angle {
     return this.degrees < 0 ? MAX_DEG + this.degrees : this.degrees
   }
 
-  // TODO: test
   get quadrant(): Quadrant {
     const rads = this.positiveRadians
 
