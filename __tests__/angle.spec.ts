@@ -75,7 +75,7 @@ describe('Angle', () => {
     ${360}  | ${Angle.fromDegrees(360)} | ${Quadrant.Fourth}
     ${380}  | ${Angle.fromDegrees(380)} | ${Quadrant.First}
   `(
-    'an angle of %angle is on the %quadrant quadrant',
+    'an angle of $angle is on the $quadrant quadrant',
     ({ angle, quadrant }) => {
       expect(angle.quadrant).toBe(quadrant)
     }
