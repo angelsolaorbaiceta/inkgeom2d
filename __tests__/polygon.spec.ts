@@ -29,6 +29,10 @@ describe('A polygon', () => {
     expect(s3).toEqual(new Segment(pThree, pOne))
   })
 
+  it('has a centroid', () => {
+    expect(polygon.centroid).toEqual({ x: 100, y: 100 })
+  })
+
   it('has rect bounds (which include a margin of 1 unit)', () => {
     const expectedBounds = new Rect(
       { x: -1, y: -1 },

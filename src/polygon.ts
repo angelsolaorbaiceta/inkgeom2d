@@ -12,6 +12,7 @@ import { vectors } from './vectors'
 
 export class Polygon {
   private _sides: Segment[] | undefined
+  private _centroid: Vector | undefined
   private _rectBounds: Rect | undefined
 
   readonly vertices: Vector[]
@@ -25,6 +26,22 @@ export class Polygon {
     }
 
     return this._sides
+  }
+
+  get centroid(): Vector {
+    if (!this._centroid) {
+      const { x: xSum, y: ySum } = this.vertices.reduce(
+        (sum, { x, y }) => ({ x: sum.x + x, y: sum.y + y }),
+        { x: 0, y: 0 }
+      )
+
+      this._centroid = new Vector(
+        xSum / this.vertexCount,
+        ySum / this.vertexCount
+      )
+    }
+
+    return this._centroid
   }
 
   get rectBounds(): Rect {
